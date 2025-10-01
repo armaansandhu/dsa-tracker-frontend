@@ -21,16 +21,16 @@ const AnimatedButton = ({ title, onClick, color, emoji, disabled = false }) => {
   }, []);
 
   return (
-    <div style={{ opacity, transform: `scale(${scale})` }} className="mb-2 sm:mb-4 transition-all duration-300">
+    <div style={{ opacity, transform: `scale(${scale})` }} className="mb-2 transition-all duration-300">
       <button
-        className={`bg-${disabled ? 'gray-500' : color}-500 px-3 sm:px-4 py-2 rounded-lg flex items-center justify-center border border-transparent hover:border-purple-400 ${disabled ? 'cursor-not-allowed' : ''} min-w-[120px] sm:min-w-[150px]`}
+        className={`bg-${disabled ? 'gray-500' : color}-500 px-4 py-2 rounded-lg flex items-center justify-center border border-transparent hover:border-purple-400 ${disabled ? 'cursor-not-allowed' : ''} w-full sm:w-auto sm:min-w-[150px]`}
         onMouseDown={handlePressIn}
         onMouseUp={handlePressOut}
         onTouchStart={handlePressIn}
         onTouchEnd={handlePressOut}
         disabled={disabled}
       >
-        <span className="text-gray-100 text-sm sm:text-base font-bold">{title} {emoji}</span>
+        <span className="text-gray-100 text-sm font-bold">{title} {emoji}</span>
       </button>
     </div>
   );
@@ -161,24 +161,24 @@ const LoginScreen = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center p-4 sm:p-6 bg-gray-800 min-h-screen max-w-md mx-auto">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-100">Login ✨</h1>
+    <div className="flex flex-col justify-center p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-100">Login ✨</h1>
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}
         autoCapitalize="none"
       />
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Password"
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
       <AnimatedButton title="Login" onClick={() => login(email, password)} color="purple" emoji="🚀" />
-      <button onClick={() => navigate('/register')} className="mt-3 sm:mt-4 text-purple-400 text-center text-sm sm:text-lg font-semibold">
+      <button onClick={() => navigate('/register')} className="mt-4 text-purple-400 text-center text-lg font-semibold">
         No account? Register 🌟
       </button>
     </div>
@@ -194,30 +194,30 @@ const RegisterScreen = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center p-4 sm:p-6 bg-gray-800 min-h-screen max-w-md mx-auto">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center text-gray-100">Register 🌟</h1>
+    <div className="flex flex-col justify-center p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-100">Register 🌟</h1>
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Email"
         value={email}
         onChange={e => setEmail(e.target.value)}
         autoCapitalize="none"
       />
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Password"
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Username"
         value={username}
         onChange={e => setUsername(e.target.value)}
       />
       <AnimatedButton title="Register" onClick={() => register(email, password, username)} color="purple" emoji="🎉" />
-      <button onClick={() => navigate('/login')} className="mt-3 sm:mt-4 text-purple-400 text-center text-sm sm:text-lg font-semibold">
+      <button onClick={() => navigate('/login')} className="mt-4 text-purple-400 text-center text-lg font-semibold">
         Have an account? Login ✨
       </button>
     </div>
@@ -271,8 +271,8 @@ const CompaniesScreen = () => {
   const renderCompanyStatus = (company) => {
     if (company.solvedQuestions === company.totalQuestions && company.totalQuestions > 0) {
       return (
-        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 rounded-full flex justify-center items-center">
-          <span className="text-gray-100 font-bold text-xs sm:text-sm">✓</span>
+        <div className="w-6 h-6 bg-blue-500 rounded-full flex justify-center items-center">
+          <span className="text-gray-100 font-bold text-sm">✓</span>
         </div>
       );
     }
@@ -280,34 +280,34 @@ const CompaniesScreen = () => {
   };
 
   return (
-    <div className="flex-1 p-4 sm:p-6 bg-gray-800 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-xl sm:text-2xl font-bold mb-4 text-gray-100">Companies 🌈</h1>
+    <div className="flex-1 p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl font-bold mb-4 text-gray-100">Companies 🌈</h1>
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full max-w-lg"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Search companies..."
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
       {dataLoading || refreshing ? (
-        <div className="flex justify-center"><div className="animate-spin h-6 w-6 sm:h-8 sm:w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
+        <div className="flex justify-center"><div className="animate-spin h-8 w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
       ) : (
-        <div className="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700">
+        <div className="space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700 h-[calc(100vh-150px)]">
           {filteredCompanies.map(item => (
             <button
               key={item.name}
-              className="p-3 sm:p-4 bg-gray-700/70 rounded-lg shadow-md flex items-center w-full hover:bg-gray-600/70"
+              className="p-4 bg-gray-700/70 rounded-lg shadow-md flex items-center w-full hover:bg-gray-600/70"
               onClick={() => navigate(`/company/${item.name}`)}
             >
               <div className="flex-1">
-                <h2 className="text-base sm:text-lg font-bold text-gray-100">{item.name}</h2>
-                <p className="text-gray-400 text-sm sm:text-base">{item.totalQuestions} Questions</p>
+                <h2 className="text-lg font-bold text-gray-100">{item.name}</h2>
+                <p className="text-gray-400 text-sm">{item.totalQuestions} Questions</p>
               </div>
               {renderCompanyStatus(item)}
             </button>
           ))}
         </div>
       )}
-      <button onClick={onRefresh} className="mt-3 sm:mt-4 text-purple-400 text-sm sm:text-base">Refresh 🔄</button>
+      <button onClick={onRefresh} className="mt-4 text-purple-400 text-base">Refresh 🔄</button>
     </div>
   );
 };
@@ -362,54 +362,54 @@ const CompanyDetailScreen = () => {
   const renderStatusIndicator = (status) => {
     if (status === 'solved') {
       return (
-        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 rounded-full flex justify-center items-center">
-          <span className="text-gray-100 font-bold text-xs sm:text-sm">✓</span>
+        <div className="w-6 h-6 bg-blue-500 rounded-full flex justify-center items-center">
+          <span className="text-gray-100 font-bold text-sm">✓</span>
         </div>
       );
     } else if (status === 'practice') {
-      return <div className="w-5 h-5 sm:w-6 sm:h-6 bg-yellow-500 rounded-full"></div>;
+      return <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>;
     }
     return null;
   };
 
   return (
-    <div className="flex-1 p-4 sm:p-6 bg-gray-800 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-100">{company} 🌟</h1>
+    <div className="flex-1 p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl font-bold mb-6 text-gray-100">{company} 🌟</h1>
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-          <div className="bg-blue-500 p-3 sm:p-4 rounded-lg shadow-md">
-            <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Solved</h2>
-            <p className="text-gray-100 text-lg sm:text-2xl">{stats.solved}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          <div className="bg-blue-500 p-4 rounded-lg shadow-md">
+            <h2 className="text-gray-100 text-lg font-bold">Solved</h2>
+            <p className="text-gray-100 text-2xl">{stats.solved}</p>
           </div>
-          <div className="bg-yellow-500 p-3 sm:p-4 rounded-lg shadow-md">
-            <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Practice</h2>
-            <p className="text-gray-100 text-lg sm:text-2xl">{stats.practice}</p>
+          <div className="bg-yellow-500 p-4 rounded-lg shadow-md">
+            <h2 className="text-gray-100 text-lg font-bold">Practice</h2>
+            <p className="text-gray-100 text-2xl">{stats.practice}</p>
           </div>
-          <div className="bg-gray-500 p-3 sm:p-4 rounded-lg shadow-md">
-            <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Pending</h2>
-            <p className="text-gray-100 text-lg sm:text-2xl">{stats.unattempted}</p>
+          <div className="bg-gray-500 p-4 rounded-lg shadow-md">
+            <h2 className="text-gray-100 text-lg font-bold">Pending</h2>
+            <p className="text-gray-100 text-2xl">{stats.unattempted}</p>
           </div>
-          <div className="bg-purple-500 p-3 sm:p-4 rounded-lg shadow-md">
-            <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Total</h2>
-            <p className="text-gray-100 text-lg sm:text-2xl">{stats.total}</p>
+          <div className="bg-purple-500 p-4 rounded-lg shadow-md">
+            <h2 className="text-gray-100 text-lg font-bold">Total</h2>
+            <p className="text-gray-100 text-2xl">{stats.total}</p>
           </div>
         </div>
       )}
       {dataLoading || refreshing ? (
-        <div className="flex justify-center"><div className="animate-spin h-6 w-6 sm:h-8 sm:w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
+        <div className="flex justify-center"><div className="animate-spin h-8 w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
       ) : (
-        <div className="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700">
+        <div className="space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700 h-[calc(100vh-150px)]">
           {filteredQuestions.map(item => (
             <button
               key={item.id}
-              className="p-3 sm:p-4 bg-gray-700/70 rounded-lg shadow-md flex items-center w-full hover:bg-gray-600/70"
+              className="p-4 bg-gray-700/70 rounded-lg shadow-md flex items-center w-full hover:bg-gray-600/70"
               onClick={() => navigate(`/question/${item.id}`)}
             >
               <div className="flex-1">
-                <h2 className="text-base sm:text-lg font-bold text-gray-100">{item.name}</h2>
-                <div className="flex items-center mt-1 sm:mt-2">
-                  <span className={`px-2 py-1 rounded mr-2 text-xs sm:text-sm ${getDifficultyStyle(item.difficulty)}`}>{item.difficulty}</span>
-                  <span className="text-gray-400 text-xs sm:text-sm">Frequency: {formatFrequency(item.averageFrequency)}</span>
+                <h2 className="text-lg font-bold text-gray-100">{item.name}</h2>
+                <div className="flex items-center mt-2">
+                  <span className={`px-2 py-1 rounded mr-2 text-sm ${getDifficultyStyle(item.difficulty)}`}>{item.difficulty}</span>
+                  <span className="text-gray-400 text-sm">Frequency: {formatFrequency(item.averageFrequency)}</span>
                 </div>
               </div>
               {renderStatusIndicator(item.status)}
@@ -417,7 +417,7 @@ const CompanyDetailScreen = () => {
           ))}
         </div>
       )}
-      <button onClick={onRefresh} className="mt-3 sm:mt-4 text-purple-400 text-sm sm:text-base">Refresh 🔄</button>
+      <button onClick={onRefresh} className="mt-4 text-purple-400 text-base">Refresh 🔄</button>
     </div>
   );
 };
@@ -440,6 +440,9 @@ const QuestionDetailScreen = () => {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [timerInterval, setTimerInterval] = useState(null);
   const [topicsToRemove, setTopicsToRemove] = useState([]);
+  const navigate = useNavigate();
+
+  const API_URL = 'https://dsa-tracker-backend-production-616d.up.railway.app';
 
   useEffect(() => {
     const foundQuestion = questions.find(q => q.id === parseInt(questionId));
@@ -539,24 +542,24 @@ const QuestionDetailScreen = () => {
     }
   };
 
-  if (!question) return <div className="flex justify-center min-h-screen"><div className="animate-spin h-6 w-6 sm:h-8 sm:w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>;
+  if (!question) return <div className="flex justify-center min-h-screen"><div className="animate-spin h-8 w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>;
 
   return (
-    <div className="flex-1 p-4 sm:p-6 bg-gray-800 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-100">{question.name} 🌟</h1>
-      <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-gray-700/70 rounded-lg">
-        <h2 className="font-bold mb-2 text-gray-100 text-sm sm:text-base">Companies:</h2>
+    <div className="flex-1 p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl font-bold mb-6 text-gray-100">{question.name} 🌟</h1>
+      <div className="mb-4 p-4 bg-gray-700/70 rounded-lg">
+        <h2 className="font-bold mb-2 text-gray-100 text-base">Companies:</h2>
         <div className="flex flex-wrap mb-2 gap-2">
           {question.companies.map((company, index) => (
-            <span key={index} className="bg-blue-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold text-gray-100">{company.name}</span>
+            <span key={index} className="bg-blue-600 px-3 py-1 rounded-full text-sm font-semibold text-gray-100">{company.name}</span>
           ))}
         </div>
-        <h2 className="font-bold mb-2 text-gray-100 text-sm sm:text-base">Topics:</h2>
+        <h2 className="font-bold mb-2 text-gray-100 text-base">Topics:</h2>
         <div className="flex flex-wrap mb-2 gap-2">
           {question.topics.map((topic, index) => (
             <button
               key={index}
-              className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm ${topicsToRemove.includes(topic) ? 'bg-red-600' : 'bg-purple-600'} ${user.is_admin ? 'cursor-pointer' : 'cursor-default'}`}
+              className={`px-3 py-1 rounded-full text-sm ${topicsToRemove.includes(topic) ? 'bg-red-600' : 'bg-purple-600'} ${user.is_admin ? 'cursor-pointer' : 'cursor-default'}`}
               onClick={() => user.is_admin && toggleTopicToRemove(topic)}
             >
               <span className="font-semibold text-gray-100">{topic} {user.is_admin && topicsToRemove.includes(topic) ? '✕' : ''}</span>
@@ -568,16 +571,16 @@ const QuestionDetailScreen = () => {
             <AnimatedButton title="Remove Topics" onClick={removeTopics} color="red" emoji="🗑️" disabled={topicsToRemove.length === 0} />
           </div>
         )}
-        <p className="text-gray-400 mb-2 text-xs sm:text-sm">Frequency: {formatFrequency(question.averageFrequency)}</p>
+        <p className="text-gray-400 mb-2 text-sm">Frequency: {formatFrequency(question.averageFrequency)}</p>
         <AnimatedButton title="View Question" onClick={openLink} color="purple" emoji="🔗" />
       </div>
-      <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-gray-700/70 rounded-lg">
-        <h2 className="font-bold mb-2 sm:mb-3 text-gray-100 text-sm sm:text-base">Status:</h2>
+      <div className="mb-4 p-4 bg-gray-700/70 rounded-lg">
+        <h2 className="font-bold mb-3 text-gray-100 text-base">Status:</h2>
         <div className="flex flex-wrap gap-2">
           {['unattempted', 'practice', 'solved'].map(status => (
             <button
               key={status}
-              className={`flex-1 min-w-[90px] sm:min-w-[100px] px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm ${
+              className={`flex-1 min-w-[100px] px-4 py-2 rounded-lg text-sm ${
                 question.status === status
                   ? status === 'unattempted' ? 'bg-gray-600' : status === 'practice' ? 'bg-yellow-600' : 'bg-blue-600'
                   : 'bg-gray-600'
@@ -591,14 +594,14 @@ const QuestionDetailScreen = () => {
           ))}
         </div>
       </div>
-      <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-gray-700/70 rounded-lg">
-        <div className="flex justify-between items-center mb-2 sm:mb-3">
-          <h2 className="text-base sm:text-lg font-bold text-gray-100">Attempts: {question.attemptCount || 0}</h2>
-          <span className="bg-blue-600 px-2 sm:px-3 py-1 rounded-lg text-gray-100 font-semibold text-xs sm:text-sm">Best Time: {formatTime(question.bestTime)}</span>
+      <div className="mb-4 p-4 bg-gray-700/70 rounded-lg">
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="text-lg font-bold text-gray-100">Attempts: {question.attemptCount || 0}</h2>
+          <span className="bg-blue-600 px-3 py-1 rounded-lg text-gray-100 font-semibold text-sm">Best Time: {formatTime(question.bestTime)}</span>
         </div>
         {isTiming ? (
-          <div className="p-3 sm:p-4 bg-gray-600/50 rounded-lg text-center">
-            <p className="text-base sm:text-lg font-semibold text-gray-100 mb-2">Timer: {formatTime(elapsedSeconds)}</p>
+          <div className="p-4 bg-gray-600/50 rounded-lg text-center">
+            <p className="text-lg font-semibold text-gray-100 mb-2">Timer: {formatTime(elapsedSeconds)}</p>
             <AnimatedButton title="Stop Timer" onClick={stopTimer} color="red" emoji="⏹️" />
           </div>
         ) : (
@@ -608,7 +611,6 @@ const QuestionDetailScreen = () => {
     </div>
   );
 };
-
 // Stats Screen
 const StatsScreen = () => {
   const { questions, dataLoading, fetchQuestions } = useContext(QuestionsContext);
@@ -616,6 +618,8 @@ const StatsScreen = () => {
   const [stats, setStats] = useState(null);
   const [statsLoading, setStatsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+
+  const API_URL = 'https://dsa-tracker-backend-production-616d.up.railway.app';
 
   const fetchStats = async () => {
     setStatsLoading(true);
@@ -647,42 +651,42 @@ const StatsScreen = () => {
     }
   };
 
-  if (dataLoading || statsLoading || !stats) return <div className="flex justify-center min-h-screen"><div className="animate-spin h-6 w-6 sm:h-8 sm:w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>;
+  if (dataLoading || statsLoading || !stats) return <div className="flex justify-center min-h-screen"><div className="animate-spin h-8 w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>;
 
   return (
-    <div className="flex-1 p-4 sm:p-6 bg-gray-800 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-100">Statistics 📊</h1>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-        <div className="bg-purple-500 p-3 sm:p-4 rounded-lg shadow-md">
-          <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Total</h2>
-          <p className="text-gray-100 text-lg sm:text-2xl">{stats.total}</p>
+    <div className="flex-1 p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl font-bold mb-6 text-gray-100">Statistics 📊</h1>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+        <div className="bg-purple-500 p-4 rounded-lg shadow-md">
+          <h2 className="text-gray-100 text-lg font-bold">Total</h2>
+          <p className="text-gray-100 text-2xl">{stats.total}</p>
         </div>
-        <div className="bg-blue-500 p-3 sm:p-4 rounded-lg shadow-md">
-          <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Solved</h2>
-          <p className="text-gray-100 text-lg sm:text-2xl">{stats.byStatus.solved}</p>
+        <div className="bg-blue-500 p-4 rounded-lg shadow-md">
+          <h2 className="text-gray-100 text-lg font-bold">Solved</h2>
+          <p className="text-gray-100 text-2xl">{stats.byStatus.solved}</p>
         </div>
-        <div className="bg-yellow-500 p-3 sm:p-4 rounded-lg shadow-md">
-          <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Practice</h2>
-          <p className="text-gray-100 text-lg sm:text-2xl">{stats.byStatus.practice}</p>
+        <div className="bg-yellow-500 p-4 rounded-lg shadow-md">
+          <h2 className="text-gray-100 text-lg font-bold">Practice</h2>
+          <p className="text-gray-100 text-2xl">{stats.byStatus.practice}</p>
         </div>
-        <div className="bg-gray-500 p-3 sm:p-4 rounded-lg shadow-md">
-          <h2 className="text-gray-100 text-sm sm:text-lg font-bold">Pending</h2>
-          <p className="text-gray-100 text-lg sm:text-2xl">{stats.byStatus.unattempted}</p>
+        <div className="bg-gray-500 p-4 rounded-lg shadow-md">
+          <h2 className="text-gray-100 text-lg font-bold">Pending</h2>
+          <p className="text-gray-100 text-2xl">{stats.byStatus.unattempted}</p>
         </div>
       </div>
-      <h2 className="text-base sm:text-xl font-bold mb-2 sm:mb-3 text-gray-100">By Difficulty</h2>
+      <h2 className="text-lg font-bold mb-3 text-gray-100">By Difficulty</h2>
       {stats.byDifficulty.map((d, index) => (
-        <div key={index} className="p-2 sm:p-3 mb-2 bg-gray-700/70 rounded-lg shadow-md flex items-center">
-          <span className={`px-2 sm:px-3 py-1 rounded mr-2 sm:mr-3 text-xs sm:text-sm ${getDifficultyStyle(d.difficulty)}`}>{d.difficulty}</span>
-          <span className="text-gray-400 text-xs sm:text-sm">{d.solved}/{d.total} Solved</span>
+        <div key={index} className="p-3 mb-2 bg-gray-700/70 rounded-lg shadow-md flex items-center">
+          <span className={`px-3 py-1 rounded mr-3 text-sm ${getDifficultyStyle(d.difficulty)}`}>{d.difficulty}</span>
+          <span className="text-gray-400 text-sm">{d.solved}/{d.total} Solved</span>
         </div>
       ))}
-      <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-700/70 rounded-lg shadow-md">
-        <h2 className="text-base sm:text-xl font-bold mb-2 sm:mb-3 text-gray-100">Profile 😊</h2>
-        <p className="text-gray-400 mb-2 text-xs sm:text-sm">Email: {user.email}</p>
-        <p className="text-gray-400 mb-2 sm:mb-4 text-xs sm:text-sm">Username: {user.username}</p>
+      <div className="mt-6 p-4 bg-gray-700/70 rounded-lg shadow-md">
+        <h2 className="text-lg font-bold mb-3 text-gray-100">Profile 😊</h2>
+        <p className="text-gray-400 mb-2 text-sm">Email: {user.email}</p>
+        <p className="text-gray-400 mb-4 text-sm">Username: {user.username}</p>
       </div>
-      <button onClick={onRefresh} className="mt-3 sm:mt-4 text-purple-400 text-sm sm:text-base">Refresh 🔄</button>
+      <button onClick={onRefresh} className="mt-4 text-purple-400 text-base">Refresh 🔄</button>
     </div>
   );
 };
@@ -751,27 +755,27 @@ const QuestionsScreen = () => {
   const renderStatusIndicator = (status) => {
     if (status === 'solved') {
       return (
-        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-blue-500 rounded-full flex justify-center items-center">
-          <span className="text-gray-100 font-bold text-xs sm:text-sm">✓</span>
+        <div className="w-6 h-6 bg-blue-500 rounded-full flex justify-center items-center">
+          <span className="text-gray-100 font-bold text-sm">✓</span>
         </div>
       );
     } else if (status === 'practice') {
-      return <div className="w-5 h-5 sm:w-6 sm:h-6 bg-yellow-500 rounded-full"></div>;
+      return <div className="w-6 h-6 bg-yellow-500 rounded-full"></div>;
     }
     return null;
   };
 
   return (
-    <div className="flex-1 p-4 sm:p-6 bg-gray-800 min-h-screen max-w-7xl mx-auto">
-      <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-100">Questions ❓</h1>
+    <div className="flex-1 p-4 bg-gray-800 min-h-screen w-full">
+      <h1 className="text-2xl font-bold mb-6 text-gray-100">Questions ❓</h1>
       <input
-        className="border border-transparent p-2 sm:p-3 mb-3 sm:mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full max-w-lg"
+        className="border border-transparent p-3 mb-4 rounded-lg bg-gray-700/70 text-gray-100 font-semibold focus:border-purple-400 focus:bg-gray-800/50 outline-none w-full"
         placeholder="Search by name or topic..."
         value={search}
         onChange={e => setSearch(e.target.value)}
       />
-      <h2 className="text-base sm:text-lg font-bold mb-2 text-gray-100">Filter by Difficulty</h2>
-      <div className="flex flex-wrap mb-3 sm:mb-4 gap-2">
+      <h2 className="text-lg font-bold mb-2 text-gray-100">Filter by Difficulty</h2>
+      <div className="flex flex-wrap mb-4 gap-2">
         {['EASY', 'MEDIUM', 'HARD'].map(diff => (
           <AnimatedButton
             key={diff}
@@ -782,14 +786,14 @@ const QuestionsScreen = () => {
           />
         ))}
       </div>
-      <h2 className="text-base sm:text-lg font-bold mb-2 text-gray-100">Filter by Topic</h2>
-      <div className="mb-3 sm:mb-4">
+      <h2 className="text-lg font-bold mb-2 text-gray-100">Filter by Topic</h2>
+      <div className="mb-4">
         {topics.length > 0 && (
           <div className="flex flex-wrap mb-2 gap-2">
             {topics.map(topic => (
               <button
                 key={topic}
-                className="bg-purple-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm"
+                className="bg-purple-600 px-3 py-1 rounded-full text-sm"
                 onClick={() => toggleTopic(topic)}
               >
                 <span className="font-semibold text-gray-100">{topic} ✕</span>
@@ -801,7 +805,7 @@ const QuestionsScreen = () => {
           {availableTopics.map(topic => (
             <button
               key={topic}
-              className={`bg-${topics.includes(topic) ? 'purple-600' : 'gray-600'} px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm`}
+              className={`bg-${topics.includes(topic) ? 'purple-600' : 'gray-600'} px-3 py-1 rounded-full text-sm`}
               onClick={() => toggleTopic(topic)}
             >
               <span className="font-semibold text-gray-100">{topic}</span>
@@ -810,20 +814,20 @@ const QuestionsScreen = () => {
         </div>
       </div>
       {dataLoading || refreshing ? (
-        <div className="flex justify-center"><div className="animate-spin h-6 w-6 sm:h-8 sm:w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
+        <div className="flex justify-center"><div className="animate-spin h-8 w-8 border-4 border-purple-500 rounded-full border-t-transparent"></div></div>
       ) : (
-        <div className="space-y-2 max-h-[calc(100vh-200px)] overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700">
+        <div className="space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-purple-500 scrollbar-track-gray-700 h-[calc(100vh-150px)]">
           {filteredQuestions.map(item => (
             <button
               key={item.id}
-              className="p-3 sm:p-4 bg-gray-700/70 rounded-lg flex items-center w-full hover:bg-gray-600/70"
+              className="p-4 bg-gray-700/70 rounded-lg flex items-center w-full hover:bg-gray-600/70"
               onClick={() => navigate(`/question/${item.id}`)}
             >
               <div className="flex-1">
-                <h2 className="text-base sm:text-lg font-bold text-gray-100">{item.name}</h2>
-                <div className="flex items-center mt-1 sm:mt-2 gap-2">
-                  <span className={`px-2 py-1 rounded text-xs sm:text-sm ${getDifficultyStyle(item.difficulty)}`}>{item.difficulty}</span>
-                  <span className="text-gray-400 text-xs sm:text-sm">Frequency: {formatFrequency(item.averageFrequency)}</span>
+                <h2 className="text-lg font-bold text-gray-100">{item.name}</h2>
+                <div className="flex items-center mt-2 gap-2">
+                  <span className={`px-2 py-1 rounded text-sm ${getDifficultyStyle(item.difficulty)}`}>{item.difficulty}</span>
+                  <span className="text-gray-400 text-sm">Frequency: {formatFrequency(item.averageFrequency)}</span>
                 </div>
               </div>
               {renderStatusIndicator(item.status)}
@@ -831,7 +835,7 @@ const QuestionsScreen = () => {
           ))}
         </div>
       )}
-      <button onClick={onRefresh} className="mt-3 sm:mt-4 text-purple-400 text-sm sm:text-base">Refresh 🔄</button>
+      <button onClick={onRefresh} className="mt-4 text-purple-400 text-base">Refresh 🔄</button>
     </div>
   );
 };
